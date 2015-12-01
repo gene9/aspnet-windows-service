@@ -1,6 +1,12 @@
 aspnet-windows-service
 =======
 
+### Note
+
+This is modified version of original repository https://github.com/taskmatics/aspnet-windows-service. It should allow to use dynamic views (Razor) for self hosted ASP.NET 5/MVC 6 environment.
+
+### ---
+
 This repository provides a shell project that you can use to get a Windows service hosting ASP.NET 5 with static files and MVC 6.
 
 For detailed information, please read the following post: [How to Host ASP.NET in a Windows Service](http://taskmatics.com/blog/host-asp-net-in-a-windows-service/)
