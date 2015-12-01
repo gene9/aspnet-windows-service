@@ -8,6 +8,9 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.ServiceProcess;
+using Microsoft.AspNet.Diagnostics;
+using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace MyDnxService
 {
@@ -38,10 +41,16 @@ namespace MyDnxService
             }
         }
 
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+        }
+
         protected override void OnStart(string[] args)
         {
             try
             {
+
                 var configProvider = new MemoryConfigurationProvider();
                 configProvider.Add("server.urls", "http://localhost:5000");
 
@@ -51,12 +60,38 @@ namespace MyDnxService
 
                 var builder = new WebHostBuilder(config);
                 builder.UseServer("Microsoft.AspNet.Server.Kestrel");
-                builder.UseServices(services => services.AddMvc());
+                builder.UseServices(services =>
+                {
+                    services.AddMvc(opts =>
+                    {
+                        // none
+                    });
+                });
+
                 builder.UseStartup(appBuilder =>
                 {
+                    appBuilder.Use(async (ctx, next) =>
+                    {
+                        try
+                        {
+                            await next();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                    });
+
                     appBuilder.UseDefaultFiles();
                     appBuilder.UseStaticFiles();
                     appBuilder.UseMvc();
+
+                    //if (env.IsDevelopment())
+                    {
+                        appBuilder.UseBrowserLink();
+                        appBuilder.UseDeveloperExceptionPage();
+                        appBuilder.UseDatabaseErrorPage();
+                    }
                 });
 
                 var hostingEngine = builder.Build();
