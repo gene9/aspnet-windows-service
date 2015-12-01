@@ -19,7 +19,11 @@ This is needed in order to run the `install` command.
 #### 1. Clone the repository
 Run `git clone https://github.com/gene9/aspnet-windows-service`
 
-Run `cd aspnet-windows-service`
+Run `cd aspnet-windows-service\src\AspNetWindowsService`
+
+Run `npm install -g bower`
+
+Run `bower update`
 
 #### 2. Install the service
 Run `install <optional-service-name>` (`AspNetWindowsService` is used by default for the name)
