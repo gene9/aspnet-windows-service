@@ -17,7 +17,7 @@ For detailed information, please read the following post: [How to Host ASP.NET i
 This is needed in order to run the `install` command.
 
 #### 1. Clone the repository
-Run `git clone https://github.com/taskmatics/aspnet-windows-service`
+Run `git clone https://github.com/gene9/aspnet-windows-service`
 
 Run `cd aspnet-windows-service`
 
@@ -30,9 +30,8 @@ This command does a few things:
 * Starts the service
 
 #### Browsing the Website
-To view static content (from `index.html`), launch a browser and navigate to `http://localhost:5000`. The port is configurable in code in the `src\Program.cs`.
 
-To view MVC output (from `TimeController`), launch a browser and navigate to `http://localhost:5000/time`. The port is configurable in code in the `src\Program.cs`.
+To view MVC output (from `HomeController`), launch a browser and navigate to `http://localhost:5000/`. The port is configurable in code in the `src\Program.cs`.
 
 #### Uninstalling
 Run `uninstall <optional-service-name>` (The name must match the one used during install.)
