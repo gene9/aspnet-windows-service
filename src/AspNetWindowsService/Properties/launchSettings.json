@@ -1,23 +1,26 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:57642/",
-      "sslPort": 0
-    }
-  },
-  "profiles": {
-    "run": {
-      "commandName": "run",
-      "sdkVersion": "dnx-clr-win-x86.1.0.0-rc1-final"
+    "iisSettings": {
+        "windowsAuthentication": false,
+        "anonymousAuthentication": true,
+        "iisExpress": {
+            "applicationUrl": "http://localhost:57642/",
+            "sslPort": 0
+        }
     },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "Hosting:Environment": "Development"
-      }
+    "profiles": {
+        "run": {
+            "commandName": "run",
+            "environmentVariables": {
+                "Hosting:Environment": "Development"
+            },
+            "sdkVersion": "dnx-clr-win-x86.1.0.0-rc1-update1"
+        },
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "Hosting:Environment": "Development"
+            }
+        }
     }
-  }
 }

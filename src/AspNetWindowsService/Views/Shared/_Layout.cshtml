@@ -1,14 +1,34 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+@addTagHelper "*, TagHelperCustom"
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <env names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </env>
+    <env names="">
+        <link rel="stylesheet" href="~/assets/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/assets/css/site.css" />
+    </env>
+
+    @*NOTE: it seems like environment tags are broken in RC1 Update 1, so it is replaced with custom tag helper
+
+        @*<environment names="Development">
+                <link rel="stylesheet" href="~/assets/lib/bootstrap/dist/css/bootstrap.css" />
+                <link rel="stylesheet" href="~/assets/css/site.css" />
+            </environment>
+            <environment names="Production">
+                <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+                <link rel="stylesheet" href="~/css/site.css" />
+            </environment>*@
 </head>
 <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -35,9 +55,17 @@
         </footer>
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <env names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </env>
+
+    <env names="">
+        <script src="~/assets/lib/jquery/dist/jquery.js"></script>
+        <script src="~/assets/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/assets/js/site.js" asp-append-version="true"></script>
+    </env>
 
     @RenderSection("scripts", required: false)
 </body>

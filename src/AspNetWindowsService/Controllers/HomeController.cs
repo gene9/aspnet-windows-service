@@ -17,7 +17,6 @@ namespace MyDnxService
         [Route("")]
         public IActionResult Index()
         {
-            //return View("~/Views/Home/Index.cshtml", new Example
             return View("Index", new Example
             {
                 Text = DateTime.Now.ToLongDateString()
